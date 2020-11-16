@@ -5,7 +5,7 @@ import polyline
 import json
 import numpy as np
 
-elevation_data = srtm.get_data()
+elevation_data = srtm.get_data(local_cache_dir="srtm_cache")
 
 def process_gpx(gpx_filepath, height_max_len=100):
     out_dict = {}
