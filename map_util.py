@@ -5,11 +5,11 @@ import polyline
 import json
 import numpy as np
 import os
+import hashlib
 
 elevation_data = srtm.get_data(local_cache_dir="srtm_cache")
 
 base_dir = os.path.dirname(os.path.realpath(__file__))
-print(base_dir)
 
 def process_gpx(gpx_filepath, height_max_len=100):
     out_dict = {}
@@ -62,8 +62,23 @@ if __name__ == "__main__":
     args = parser.parse_args()
     gpxs = args.gpxs
 
-    output = []
-    for gpx in gpxs:
-        output.append(process_gpx(os.path.abspath(gpx)))
+    data_dir = os.path.join(base_dir, "data")
+    os.makedirs(data_dir, exist_ok=True)
 
-    print(json.dumps(output))
+    for gpx in gpxs:
+        gpx_filepath = os.path.abspath(gpx)
+
+        output = json.dumps(process_gpx(gpx_filepath)).encode("UTF-8")
+
+        output_filename = hashlib.sha1(output).hexdigest()[10:] + '.json'
+        output_filepath = os.path.join(data_dir, output_filename)
+        with open(output_filepath, "wb") as output_file:
+            output_file.write(output)
+
+    manifest_filepath = os.path.join(base_dir, "manifest.txt")
+
+    with open(manifest_filepath, "wt") as manifest_file:
+        manifest = [ os.path.join("data",filename) + "\n" for filename in os.listdir(data_dir)]
+        manifest_file.writelines(manifest)
+
+
