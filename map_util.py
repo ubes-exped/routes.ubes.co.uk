@@ -7,7 +7,7 @@ import numpy as np
 import os
 import hashlib
 
-elevation_data = srtm.get_data(local_cache_dir="srtm_cache")
+elevation_data = srtm.get_data(local_cache_dir='srtm_cache')
 
 base_dir = os.path.dirname(os.path.realpath(__file__))
 
@@ -20,16 +20,9 @@ def process_gpx(gpx_filepath, height_max_len=100):
     elevation_data.add_elevations(gpx)
     gpx.remove_time()
 
-    gpx_filename = os.path.basename(gpx_filepath)
-    new_gpx_filepath = os.path.join(base_dir, "gpx_cache", gpx_filename)
-    os.makedirs(os.path.dirname(new_gpx_filepath), exist_ok=True)
-    with open(new_gpx_filepath, "wt") as new_gpx_file:
-        new_gpx_file.write(gpx.to_xml())
-
     out_dict['name'] = gpx.name
     out_dict['description'] = gpx.description
     out_dict['routes'] = []
-    out_dict['path'] = os.path.relpath(new_gpx_filepath, base_dir)
 
     for route in gpx.routes + gpx.tracks:
         route.remove_time()
@@ -50,10 +43,18 @@ def process_gpx(gpx_filepath, height_max_len=100):
 
         out_dict['routes'].append(out_route)
 
-    return out_dict
+    output_filename = hashlib.sha1(json.dumps(out_dict['routes']).encode('UTF-8')).hexdigest()[10:]
+    out_dict['filename'] = os.path.join('gpx_cache', output_filename + '.gpx')
 
-if __name__ == "__main__":
-    description = "Process multiple gpx files into a single polyline file"
+    new_gpx_filepath = os.path.join(base_dir, out_dict['filename'])
+    os.makedirs(os.path.dirname(new_gpx_filepath), exist_ok=True)
+    with open(new_gpx_filepath, 'wt') as new_gpx_file:
+        new_gpx_file.write(gpx.to_xml())
+
+    return out_dict, output_filename
+
+if __name__ == '__main__':
+    description = 'Process multiple gpx files into a single polyline file'
 
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('gpxs', metavar='gpx', nargs='+',
@@ -62,23 +63,24 @@ if __name__ == "__main__":
     args = parser.parse_args()
     gpxs = args.gpxs
 
-    data_dir = os.path.join(base_dir, "data")
+    data_dir = os.path.join(base_dir, 'data')
     os.makedirs(data_dir, exist_ok=True)
 
     for gpx in gpxs:
         gpx_filepath = os.path.abspath(gpx)
 
-        output = json.dumps(process_gpx(gpx_filepath)).encode("UTF-8")
+        output, output_filename = process_gpx(gpx_filepath)
+        output = json.dumps(output).encode('UTF-8')
 
-        output_filename = hashlib.sha1(output).hexdigest()[10:] + '.json'
-        output_filepath = os.path.join(data_dir, output_filename)
-        with open(output_filepath, "wb") as output_file:
+        output_filepath = os.path.join(data_dir, output_filename + '.json')
+        with open(output_filepath, 'wb') as output_file:
             output_file.write(output)
 
-    manifest_filepath = os.path.join(base_dir, "manifest.txt")
 
-    with open(manifest_filepath, "wt") as manifest_file:
-        manifest = [ os.path.join("data",filename) + "\n" for filename in os.listdir(data_dir)]
+    manifest_filepath = os.path.join(base_dir, 'manifest.txt')
+
+    with open(manifest_filepath, 'wt') as manifest_file:
+        manifest = [ os.path.join('data',filename) + '\n' for filename in os.listdir(data_dir)]
         manifest_file.writelines(manifest)
 
 
