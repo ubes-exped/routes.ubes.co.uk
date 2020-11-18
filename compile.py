@@ -57,11 +57,14 @@ if __name__ == '__main__':
     description = 'Process multiple gpx files into a single polyline file'
 
     parser = argparse.ArgumentParser(description=description)
-    parser.add_argument('gpxs', metavar='gpx', nargs='+',
+    parser.add_argument('gpxs', metavar='gpx', nargs='*',
                         help='A list of gpx files to process')
 
     args = parser.parse_args()
     gpxs = args.gpxs
+
+    gpxs += [os.path.join(base_dir, 'gpx_cache', gpx) for gpx in
+             os.listdir((os.path.join(base_dir, 'gpx_cache')))]
 
     data_dir = os.path.join(base_dir, 'data')
     os.makedirs(data_dir, exist_ok=True)
