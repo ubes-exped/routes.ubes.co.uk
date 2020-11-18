@@ -3,7 +3,6 @@ import gpxpy
 import srtm
 import polyline
 import json
-import numpy as np
 import os
 import hashlib
 
