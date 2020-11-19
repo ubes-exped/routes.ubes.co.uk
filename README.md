@@ -10,7 +10,7 @@ Adding new routes
 To add a new route, all that is required is a gpx file of the route. The file
 must have some metadata in it:
 * `<name>` - The name of the route
-* `<Description>` - A short description of the route
+* `<description>` - A short description of the route
 
 This gpx file should then be added to the [gpx](gpx) directory.
 
@@ -26,9 +26,10 @@ this repo, via a github action.
 
 The compilation step takes the provided gpx file, adds/replaces the heights
 using [SRTM.py](https://pypi.org/project/SRTM.py), and then renames the file to
-a standard form derived from the hash of the polyline of the route. 
+a standard form derived from the hash of the polyline of the route.
 
-From this new gpx file a json dictionary is created, which contains:
+From each of the standardised gpx files in the [gpx](gpx) directory a json
+dictionary is created, which contains:
 * The `name` for the route
 * The `description` of the route
 * An `id` derived from the hash of the combined segments
@@ -39,4 +40,5 @@ From this new gpx file a json dictionary is created, which contains:
   * A set of `heights` of the segment. Note that this is interpolated to ~100
     points, as it is intended for generating elevation plots.
 
-This json dictionary is then saved as [generated/data.json](generated/data.json).
+These json dictionaries are then concatenated to create
+[generated/data.json](generated/data.json).
