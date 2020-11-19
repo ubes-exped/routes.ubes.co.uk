@@ -1,7 +1,5 @@
 name: Python package
 
-on: [push]
-
 jobs:
   build:
 
@@ -29,6 +27,6 @@ jobs:
           author_name: Goaty Bot
           author_email: ubes-committee@bristol.ac.uk
           message: "Automatically compile"
-          add: "data/* gpx_cache/* manifest.txt"
+          add: "generated/* gpx/*"
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
