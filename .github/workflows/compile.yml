@@ -27,7 +27,7 @@ jobs:
       uses: EndBug/add-and-commit@v5
       with:
           author_name: Goaty Bot
-          author_email: ubes-committee@bristol.ac.uk
+          author_email: goaty@bristol.ac.uk
           message: "Automatically compile"
           add: "generated/* gpx/*"
       env:
