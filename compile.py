@@ -9,8 +9,9 @@ import hashlib
 elevation_data = srtm.get_data(local_cache_dir='srtm_cache')
 
 base_dir = os.path.dirname(os.path.realpath(__file__))
-gpx_dir  = os.path.join(base_dir, "gpx")
+gpx_dir = os.path.join(base_dir, "gpx")
 generated_dir = os.path.join(base_dir, "generated")
+
 
 def process_gpx(gpx_filepath, height_max_len=100):
     out_dict = {}
@@ -28,8 +29,8 @@ def process_gpx(gpx_filepath, height_max_len=100):
     for route in gpx.routes + gpx.tracks:
         route.remove_time()
         out_route = {'points': [],
-                     'heights' : [],
-                    }
+                     'heights': [],
+                     }
 
         for seg in route.segments:
             points = [(p.latitude, p.longitude) for p in seg.points]
@@ -39,12 +40,14 @@ def process_gpx(gpx_filepath, height_max_len=100):
         out_route['points'] = polyline.encode(out_route['points'])
 
         height_len = len(out_route['heights'])
+        height_skip = height_len // height_max_len
         if height_len > height_max_len:
-            out_route['heights'] = out_route['heights'][::height_len // height_max_len]
+            out_route['heights'] = out_route['heights'][::height_skip]
 
         out_dict['routes'].append(out_route)
 
-    walk_id = hashlib.sha1(json.dumps(out_dict['routes']).encode('UTF-8')).hexdigest()[:6]
+    utf8_polylines = json.dumps(out_dict['routes']).encode('UTF-8')
+    walk_id = hashlib.sha1(utf8_polylines).hexdigest()[:6]
     out_dict['id'] = walk_id
     out_dict['filename'] = os.path.join('gpx', 'route_' + walk_id + '.gpx')
 
@@ -58,6 +61,7 @@ def process_gpx(gpx_filepath, height_max_len=100):
 
     return out_dict
 
+
 if __name__ == '__main__':
     description = 'Process multiple gpx files into a single polyline file'
 
@@ -67,8 +71,8 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    gpxs = args.gpxs
-    gpxs += [os.path.join(gpx_dir, gpx) for gpx in os.listdir(gpx_dir)]
+    gpxs = [os.path.join(gpx_dir, gpx) for gpx in os.listdir(gpx_dir)]
+    gpxs += args.gpxs
 
     os.makedirs(generated_dir, exist_ok=True)
     os.makedirs(gpx_dir,  exist_ok=True)
@@ -82,4 +86,3 @@ if __name__ == '__main__':
     output_filepath = os.path.join(generated_dir, 'data.json')
     with open(output_filepath, 'wb') as output_file:
         output_file.write(output)
-
