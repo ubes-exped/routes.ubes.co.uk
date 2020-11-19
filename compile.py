@@ -10,7 +10,7 @@ elevation_data = srtm.get_data(local_cache_dir='srtm_cache')
 
 base_dir = os.path.dirname(os.path.realpath(__file__))
 gpx_dir  = os.path.join(base_dir, "gpx")
-data_dir = os.path.join(base_dir, "data")
+generated_dir = os.path.join(base_dir, "generated")
 
 def process_gpx(gpx_filepath, height_max_len=100):
     out_dict = {}
@@ -66,7 +66,8 @@ if __name__ == '__main__':
     gpxs = args.gpxs
     gpxs += [os.path.join(gpx_dir, gpx) for gpx in os.listdir(gpx_dir)]
 
-    os.makedirs(data_dir, exist_ok=True)
+    os.makedirs(generated_dir, exist_ok=True)
+    os.makedirs(gpx_dir,  exist_ok=True)
     output = []
 
     for gpx in gpxs:
@@ -74,7 +75,7 @@ if __name__ == '__main__':
 
     output = json.dumps(output).encode('UTF-8')
 
-    output_filepath = os.path.join(base_dir, 'generated', 'data.json')
+    output_filepath = os.path.join(generated_dir, 'data.json')
     with open(output_filepath, 'wb') as output_file:
         output_file.write(output)
 
