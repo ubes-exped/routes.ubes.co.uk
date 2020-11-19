@@ -24,29 +24,23 @@ def process_gpx(gpx_filepath, height_max_len=100):
 
     out_dict['name'] = gpx.name
     out_dict['description'] = gpx.description
-    out_dict['routes'] = []
+    out_dict['segments'] = []
 
-    for route in gpx.routes + gpx.tracks:
-        route.remove_time()
-        out_route = {'points': [],
-                     'heights': [],
-                     }
+    for seg in sum([track.segments for track in gpx.tracks], []):
+        out_seg = {}
 
-        for seg in route.segments:
-            points = [(p.latitude, p.longitude) for p in seg.points]
-            out_route['points'] += points
-            out_route['heights'] = [p.elevation for p in seg.points]
+        points = [(p.latitude, p.longitude) for p in seg.points]
+        out_seg['polyline'] = polyline.encode(points)
+        out_seg['length'] = seg.length_2d()
 
-        out_route['points'] = polyline.encode(out_route['points'])
+        heights = [p.elevation for p in seg.points]
+        if len(heights) > height_max_len:
+            heights = heights[::len(heights) // height_max_len]
+        out_seg['heights'] = heights
 
-        height_len = len(out_route['heights'])
-        height_skip = height_len // height_max_len
-        if height_len > height_max_len:
-            out_route['heights'] = out_route['heights'][::height_skip]
+        out_dict['segments'].append(out_seg)
 
-        out_dict['routes'].append(out_route)
-
-    utf8_polylines = json.dumps(out_dict['routes']).encode('UTF-8')
+    utf8_polylines = json.dumps(out_dict['segments']).encode('UTF-8')
     walk_id = hashlib.sha1(utf8_polylines).hexdigest()[:6]
     out_dict['id'] = walk_id
     out_dict['filename'] = os.path.join('gpx', 'route_' + walk_id + '.gpx')
