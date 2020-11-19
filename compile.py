@@ -46,7 +46,7 @@ def process_gpx(gpx_filepath, height_max_len=100):
 
     walk_id = hashlib.sha1(json.dumps(out_dict['routes']).encode('UTF-8')).hexdigest()[:6]
     out_dict['id'] = walk_id
-    out_dict['filename'] = os.path.join('gpx', 'route_'walk_id + '.gpx')
+    out_dict['filename'] = os.path.join('gpx', 'route_' + walk_id + '.gpx')
 
     new_gpx_filepath = os.path.join(base_dir, out_dict['filename'])
     os.makedirs(os.path.dirname(new_gpx_filepath), exist_ok=True)
