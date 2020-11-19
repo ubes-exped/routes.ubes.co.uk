@@ -52,7 +52,7 @@ def process_gpx(gpx_filepath, height_max_len=100):
     with open(new_gpx_filepath, 'wt') as new_gpx_file:
         new_gpx_file.write(gpx.to_xml())
 
-    if os.path.abspath(new_gpx_filepath) != os.path.abs(gpx_filepath)
+    if os.path.abspath(new_gpx_filepath) != os.path.abspath(gpx_filepath):
         os.remove(gpx_filepath)
 
     return out_dict
