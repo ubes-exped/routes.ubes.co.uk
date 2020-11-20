@@ -65,7 +65,11 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    gpxs = [os.path.join(gpx_dir, gpx) for gpx in os.listdir(gpx_dir)]
+    gpxs = []
+    gpxs += [gpx for gpx in os.listdir(gpx_dir) if  "route_" in gpx]
+    gpxs += [gpx for gpx in os.listdir(gpx_dir) if  "route_" not in gpx]
+
+    gpxs = [os.path.join(gpx_dir, gpx) for gpx in gpxs]
     gpxs += args.gpxs
 
     os.makedirs(generated_dir, exist_ok=True)
