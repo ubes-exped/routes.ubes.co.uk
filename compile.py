@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import argparse
 import gpxpy
 import srtm
@@ -19,34 +21,39 @@ def process_gpx(gpx_filepath, height_max_len=100):
     with open(gpx_filepath, 'rt') as gpx_file:
         gpx = gpxpy.parse(gpx_file)
 
-    elevation_data.add_elevations(gpx)
-    gpx.remove_time()
-
     out_dict['name'] = gpx.name
     out_dict['description'] = gpx.description
     out_dict['author'] = gpx.author_name
-    out_dict['segments'] = []
 
     tags = gpx.keywords;
     if tags is not None:
         tags = [t.rstrip().lstrip() for t in tags.split(',')];
     out_dict['tags'] = tags
 
-    for seg in sum([track.segments for track in gpx.tracks], []):
-        out_seg = {}
+    gpx.remove_elevation()
+    gpx.remove_time()
 
-        points = [(p.latitude, p.longitude) for p in seg.points]
-        out_seg['polyline'] = polyline.encode(points)
-        out_seg['length'] = seg.length_2d()
+    points = []
+    heights = []
+    for seg in sum([track.segments for track in gpx.tracks], []) + gpx.routes:
+        points += [(p.longitude, p.latitude, p.elevation) for p in seg.points]
+    points2d = [p[:2] for p in points]
 
-        heights = [p.elevation for p in seg.points]
-        if len(heights) > height_max_len:
-            heights = heights[::len(heights) // height_max_len]
-        out_seg['heights'] = heights
+    gpx.tracks = []
+    gpx.routes = []
+    gpx.routes.append(gpxpy.gpx.GPXRoute(gpx.name, gpx.description))
+    gpx.routes[0].points = [gpxpy.gpx.GPXRoutePoint(*p) for p in points]
 
-        out_dict['segments'].append(out_seg)
+    out_dict['polyline'] = polyline.encode(points2d)
+    out_dict['length'] = gpx.routes[0].length()
 
-    utf8_polylines = json.dumps(out_dict['segments']).encode('UTF-8')
+    elevation_data.add_elevations(gpx.routes[0])
+    heights = [p.elevation for p in gpx.routes[0].points]
+    if len(heights) > height_max_len:
+        heights = heights[::len(heights) // height_max_len]
+    out_dict['heights'] = heights
+
+    utf8_polylines = json.dumps(out_dict['polyline']).encode('UTF-8')
     walk_id = hashlib.sha1(utf8_polylines).hexdigest()[:6]
     out_dict['id'] = walk_id
     out_dict['filename'] = os.path.join('gpx', 'route_' + walk_id + '.gpx')
@@ -71,11 +78,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    gpxs = []
-    gpxs += [gpx for gpx in os.listdir(gpx_dir) if  "route_" in gpx]
-    gpxs += [gpx for gpx in os.listdir(gpx_dir) if  "route_" not in gpx]
-
-    gpxs = [os.path.join(gpx_dir, gpx) for gpx in gpxs]
+    gpxs = [os.path.join(gpx_dir, gpx) for gpx in os.listdir(gpx_dir)]
     gpxs += args.gpxs
 
     os.makedirs(generated_dir, exist_ok=True)
