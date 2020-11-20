@@ -10,7 +10,11 @@ Adding new routes
 To add a new route, all that is required is a gpx file of the route. The file
 must have some metadata in it:
 * `<name>` - The name of the route
-* `<description>` - A short description of the route
+* `<desc>` - A short description of the route
+
+Optionally add the following tags:
+* `<author>` - The person or persons who created the route
+* `<keywords>` - Any keyword tags that you think might describe the route, separated by commas.
 
 This gpx file should then be added to the [gpx](gpx) directory.
 
