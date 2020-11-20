@@ -37,13 +37,13 @@ dictionary is created, which contains:
 * The `name` for the route
 * The `description` of the route
 * An `id` derived from the hash of the combined segments
-* The relative path to the `filename` of the gpx track (from the repo root)
-* The `author` of the track
-* A list of `tags` that apply to the track
+* The relative path to the `filename` of the gpx route (from the repo root)
+* The `author` of the route
+* A list of `tags` that apply to the route
 * for each of the `segments` in the file:
-  * A `polyline` of the segment
-  * A `length` of the segment
-  * A set of `heights` of the segment. Note that this is interpolated to ~100
+* A `polyline` of the route
+* A `length` of the route
+* A set of `heights` of the route. Note that this is interpolated to ~100
     points, as it is intended for generating elevation plots.
 
 These json dictionaries are then concatenated to create
