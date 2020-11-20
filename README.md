@@ -38,6 +38,8 @@ dictionary is created, which contains:
 * The `description` of the route
 * An `id` derived from the hash of the combined segments
 * The relative path to the `filename` of the gpx track (from the repo root)
+* The `author` of the track
+* A list of `tags` that apply to the track
 * for each of the `segments` in the file:
   * A `polyline` of the segment
   * A `length` of the segment

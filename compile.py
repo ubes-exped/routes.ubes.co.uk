@@ -24,7 +24,13 @@ def process_gpx(gpx_filepath, height_max_len=100):
 
     out_dict['name'] = gpx.name
     out_dict['description'] = gpx.description
+    out_dict['author'] = gpx.author_name
     out_dict['segments'] = []
+
+    tags = gpx.keywords;
+    if tags is not None:
+        tags = [t.rstrip().lstrip() for t in tags.split(',')];
+    out_dict['tags'] = tags
 
     for seg in sum([track.segments for track in gpx.tracks], []):
         out_seg = {}
