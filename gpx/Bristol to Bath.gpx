@@ -1,10 +1,12 @@
 <?xml version="1.0" ?>
-<author>Crispian Morris</author>
-<keywords>long-length, flat, mixed-terrain, medium-difficulty, one-way</keywords>
-<description>Slightly longer, more scenic route to Bath, along the River Avon</description>
 <gpx xmlns="http://www.topografix.com/GPX/1/1">
- <trk>
+ <metadata>
   <name>Bristol to Bath</name>
+  <author>Crispian Morris</author>
+  <keywords>long-length, flat, mixed-terrain, medium-difficulty, one-way</keywords>
+  <desc>Slightly longer, more scenic route to Bath, along the River Avon</desc>
+ </metadata>
+ <trk>
   <trkseg>
    <trkpt lat="51.4554532" lon="-2.58651038"/>
    <trkpt lat="51.45562" lon="-2.58508"/>

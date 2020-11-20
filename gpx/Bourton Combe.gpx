@@ -1,10 +1,12 @@
 <?xml version="1.0" ?>
-<author>James Harris</author>
-<keywords>mixed-terrain, multi-climb, medium-length, Bristol, medium-difficulty</keywords>
-<description>Oval Walk to Bourton Combe via Long Ashton and Ashton Court</description>
 <gpx xmlns="http://www.topografix.com/GPX/1/1">
- <trk>
+ <metadata>
   <name>Bourton Combe</name>
+  <author>James Harris</author>
+  <keywords>mixed-terrain, multi-climb, medium-length, Bristol, medium-difficulty</keywords>
+  <desc>Oval Walk to Bourton Combe via Long Ashton and Ashton Court</desc>
+ </metadata>
+ <trk>
   <trkseg>
    <trkpt lat="51.44843875" lon="-2.61859406"/>
    <trkpt lat="51.44735554" lon="-2.61885155"/>

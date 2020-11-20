@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<author>Tommaso Barbieri</author>
-<keywords>medium-difficulty, medium-length, one-climb, Mendips, circular</keywords>
-<description>Round trip of the Southern Mendips starting and ending in Priddy mineries and passing through Ebbor gorge</description>
 <gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="ViewRanger - //www.viewranger.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+ <metadata>
+  <name>South Mendip Circle</name>
+  <author>Tommaso Barbieri</author>
+  <keywords>medium-difficulty, medium-length, one-climb, Mendips, circular</keywords>
+  <desc>Round trip of the Southern Mendips starting and ending in Priddy mineries and passing through Ebbor gorge</desc>
+ </metadata>
   <rte>
     <name><![CDATA[South Mendip Circle]]></name>
     <rtept lat="51.258976" lon="-2.647944"></rtept>

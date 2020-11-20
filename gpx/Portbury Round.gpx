@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<author>Tommaso Barbieri</author>
-<keywords>medium-length, hilly, mixed-terrain, medium-difficulty, circular</keywords>
-<description>Starting at Clifton Suspension Bridge, circling through Bristol's western hills and ending in the Avon gorge</description>
 <gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="ViewRanger - //www.viewranger.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
-  <rte>
+ <metadata>
+  <name>Portbury Round</name>
+  <author>Tommaso Barbieri</author>
+  <keywords>medium-length, hilly, mixed-terrain, medium-difficulty, circular</keywords>
+  <desc>Starting at Clifton Suspension Bridge, circling through Bristol's western hills and ending in the Avon gorge</desc>
+ </metadata> 
+ <rte>
     <name><![CDATA[Portbury Round]]></name>
     <rtept lat="51.456038079471" lon="-2.6253488369167"></rtept>
     <rtept lat="51.455375853448" lon="-2.6272827445828"></rtept>

@@ -1,8 +1,11 @@
 <?xml version="1.0" ?>
-<author>James Harris</author>
-<keywords>medium-length, one-way, Bristol, mostly-flat, ridgeline</keywords>
-<description>Ridegway from Bristol to Clevedon via Ashton Court and Cadbury</description>
 <gpx xmlns="http://www.topografix.com/GPX/1/1">
+ <metadata>
+  <name>Clevedon Via Cadbury</name>
+  <author>James Harris</author>
+  <keywords>medium-length, one-way, Bristol, mostly-flat, ridgeline</keywords>
+  <desc>Ridegway from Bristol to Clevedon via Ashton Court and Cadbury</desc>
+ </metadata>
  <trk>
   <name>Clevedon Via Cadbury</name>
   <trkseg>

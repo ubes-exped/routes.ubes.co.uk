@@ -1,8 +1,11 @@
 <?xml version="1.0" ?>
-<author>James Harris</author>
-<keywords>long-length, hilly, hard-difficulty, Bristol, one-way</keywords>
-<description>Most direct way to Cheddar over the full width of the Mendip Hills</description>
 <gpx xmlns="http://www.topografix.com/GPX/1/1">
+ <metadata>
+  <name>Cheddar or Bust</name>
+  <author>James Harris</author>
+  <keywords>long-length, hilly, hard-difficulty, Bristol, one-way</keywords>
+  <desc>Most direct way to Cheddar over the full width of the Mendip Hills</desc>
+ </metadata>
  <trk>
   <name>Cheddar or Bust</name>
   <trkseg>

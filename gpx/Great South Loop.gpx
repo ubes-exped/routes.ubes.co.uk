@@ -1,8 +1,11 @@
 <?xml version="1.0" ?>
-<author>James Harris</author>
-<keywords>long-distance, hard-difficulty, multi-climb, circular, Bristol</keywords>
-<description>Green belt circuit around south Bristol and Avon Valley</description>
 <gpx xmlns="http://www.topografix.com/GPX/1/1">
+ <metadata>
+  <name>Great South Loop</name>
+  <author>James Harris</author>
+  <keywords>long-distance, hard-difficulty, multi-climb, circular, Bristol</keywords>
+  <desc>Green belt circuit around south Bristol and Avon Valley</desc>
+ </metadata>
  <trk>
   <name>Great South Loop</name>
   <trkseg>
