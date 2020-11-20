@@ -36,7 +36,7 @@ def process_gpx(gpx_filepath, height_max_len=100):
     points = []
     heights = []
     for seg in sum([track.segments for track in gpx.tracks], []) + gpx.routes:
-        points += [(p.longitude, p.latitude, p.elevation) for p in seg.points]
+        points += [(p.latitude, p.longitude, p.elevation) for p in seg.points]
     points2d = [p[:2] for p in points]
 
     gpx.tracks = []
