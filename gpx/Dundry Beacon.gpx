@@ -2,7 +2,8 @@
 <gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="ViewRanger - //www.viewranger.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
   <metadata>
    <name>Dundry Beacon</name>
-   <author>Tommaso Barbieri</author>
+   <author>
+<name>Tommaso Barbieri</name></author>
    <keywords>medium-difficulty, medium-length, two-climbs, Bristol, circular</keywords>
    <desc>Oval to the highest hill in Bristol, including return to Clifton Bridge</desc>
   </metadata>

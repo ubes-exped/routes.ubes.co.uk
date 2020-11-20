@@ -2,7 +2,8 @@
 <gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1">
  <metadata>
   <name>Escape From Wales</name> 
-  <author>James Harris</author>
+  <author>
+<name>James Harris</name></author>
   <keywords>long-length, medium-difficulty, one-climb, one-way</keywords>
   <desc>Escape from Wales challenge from Chepstow to Bristol via Severn Bridge</desc> 
  </metadata>
