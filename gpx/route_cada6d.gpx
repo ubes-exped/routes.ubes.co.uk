@@ -2,7 +2,11 @@
 <gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" version="1.1" creator="StravaGPX Android">
   <metadata>
     <time>2020-09-01T13:11:50Z</time>
-  </metadata>
+    <name>Blaise Castle</name>
+    <desc>Walk to and around Blaise Castle</desc>
+    <author>Crispian Morris</author>
+    <keywords>medium-length, easy-difficulty, Bristol</keywords>
+   </metadata>
   <rte>
     <rtept lat="51.449377" lon="-2.61918">
       <ele>11</ele>
