@@ -25,9 +25,9 @@ def process_gpx(gpx_filepath, height_max_len=100):
     out_dict['description'] = gpx.description
     out_dict['author'] = gpx.author_name
 
-    tags = gpx.keywords;
+    tags = gpx.keywords
     if tags is not None:
-        tags = [t.rstrip().lstrip() for t in tags.split(',')];
+        tags = [t.rstrip().lstrip() for t in tags.split(',')]
     out_dict['tags'] = tags
 
     gpx.remove_elevation()
