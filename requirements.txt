@@ -2,3 +2,4 @@ argparse
 gpxpy
 SRTM.py
 polyline
+dataclasses_json
