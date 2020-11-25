@@ -217,7 +217,7 @@ if __name__ == "__main__":
     else:
         gpxs = [os.path.join(gpx_dir, gpx) for gpx in os.listdir(gpx_dir)]
 
-    shutil.rmtree(generated_dir)
+    shutil.rmtree(generated_dir, ignore_errors=True)
     os.makedirs(generated_dir, exist_ok=True)
     os.makedirs(gpx_dir, exist_ok=True)
 
