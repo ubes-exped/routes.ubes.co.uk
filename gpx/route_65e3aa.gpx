@@ -3,14 +3,15 @@
   <metadata>
     <name>Limestone Link and some</name>
     <desc>Extra long way to Bath</desc>
-    <author>Val Ismaili</author>
-    <keywords>long-length, one-way, Bristol</keywords>
     <link href="https://www.strava.com/activities/3787101801/">
       <text>Strava</text>
     </link>
     <time>1970-01-01T00:00:00Z</time>
+    <keywords>long-length, one-way, Bristol</keywords>
   </metadata>
   <rte>
+    <name>Limestone Link and some</name>
+    <desc>Extra long way to Bath</desc>
     <rtept lat="51.371278" lon="-2.349009">
       <ele>59</ele>
     </rtept>
