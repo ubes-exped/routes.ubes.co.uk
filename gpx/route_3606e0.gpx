@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" version="1.1" creator="gpx.py -- https://github.com/tkrajina/gpxpy">
+  <metadata>
+    <name>Clifton Downs Explore</name>
+    <desc>Lovely walk starting from the West Residential Village </desc>
+    <keywords>short-length, mostly-flat, paved, easy-difficulty, circular</keywords>
+  </metadata>
   <rte>
+    <name>Clifton Downs Explore</name>
+    <desc>Lovely walk starting from the West Residential Village </desc>
     <rtept lat="51.45343" lon="-2.6136">
       <ele>76</ele>
     </rtept>
