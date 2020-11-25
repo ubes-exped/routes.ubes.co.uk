@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" version="1.1" creator="Strava GPX downloader (https://chrome.google.com/webstore/detail/strava-gpx-downloader/pnglhfabfkchkadgnkfacoakincdpeeg)">
   <metadata>
+    <name>Limestone Link and some</name>
+    <desc>Extra long way to Bath</desc>
+    <author>Val Ismaili</author>
+    <keywords>long-length, one-way, Bristol</keywords>
     <link href="https://www.strava.com/activities/3787101801/">
       <text>Strava</text>
     </link>
