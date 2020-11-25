@@ -29,6 +29,6 @@ jobs:
           author_name: Goaty Bot
           author_email: goaty@bristol.ac.uk
           message: "Automatically compile"
-          add: "generated/* gpx/*"
+          add: "generated/* gpx/* walks.json"
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
