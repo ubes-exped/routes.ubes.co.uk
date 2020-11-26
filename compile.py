@@ -132,6 +132,7 @@ def process_gpx(gpx_filepath: str, elevations_max_len=100, simplification: int =
     summary.tags = tags
 
     gpx.remove_elevation()
+    gpx.time = None
     gpx.remove_time()
 
     points: List[gpxpy.gpx.GPXRoutePoint] = []
@@ -186,7 +187,7 @@ def combine_json_files(output_file_path: str, input_dir: str):
         output_file.write(b"[\n")
         try:
             first_file = True
-            for input_file_name in os.listdir(generated_dir):
+            for input_file_name in sorted(os.listdir(generated_dir)):
 
                 if not first_file:
                     output_file.write(b",\n")
