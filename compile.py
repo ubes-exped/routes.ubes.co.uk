@@ -14,7 +14,7 @@ import hashlib
 from typing import TypedDict, List, Any, Tuple, Optional
 from timeit import default_timer as timer
 
-with open("cname", "r") as cname_file:
+with open("CNAME", "r") as cname_file:
     cname = cname_file.read().strip()
     url_base = "https://" + cname
 
