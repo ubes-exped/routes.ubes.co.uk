@@ -11,7 +11,7 @@ import os
 import itertools
 import shutil
 import hashlib
-from typing import TypedDict, List, Any, Tuple
+from typing import TypedDict, List, Any, Tuple, Optional
 from timeit import default_timer as timer
 
 elevation_data = srtm.get_data(local_cache_dir="srtm_cache")
@@ -25,9 +25,9 @@ generated_dir = os.path.join(base_dir, "generated")
 class Walk(DataClassJsonMixin):
     id: str
     filename: str
-    name: str
-    description: str
-    author: str
+    name: Optional[str]
+    description: Optional[str]
+    author: Optional[str]
     tags: List[str]
 
     length: int
@@ -106,6 +106,12 @@ def encode_polyline(points: List[gpxpy.geo.Location]) -> str:
     return polyline.encode([(p.latitude, p.longitude) for p in points])
 
 
+def safe_strip(string: Optional[str])->Optional[str]:
+    if string is None:
+        return string
+    return string.strip()
+
+
 def process_gpx(gpx_filepath: str, elevations_max_len=100, simplification: int = 5):
     """
     Turn a GPX into a summary of the walk, normalising the file at the same time.
@@ -121,9 +127,9 @@ def process_gpx(gpx_filepath: str, elevations_max_len=100, simplification: int =
     with open(gpx_filepath, "rt") as gpx_file:
         gpx = gpxpy.parse(gpx_file, version="1.1")
 
-    summary.name = gpx.name.strip()
-    summary.description = gpx.description.strip()
-    summary.author = gpx.author_name.strip()
+    summary.name = safe_strip(gpx.name)
+    summary.description = safe_strip(gpx.description)
+    summary.author = safe_strip(gpx.author_name)
 
     tags = gpx.keywords
     if tags is not None:
