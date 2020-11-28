@@ -9,10 +9,12 @@ Adding new routes
 
 To add a new route, all that is required is a gpx file of the route. The file
 must have some metadata in it:
+
 * `<name>` - The name of the route
 * `<desc>` - A short description of the route
 
 Optionally add the following tags:
+
 * `<author>` - The person or persons who created the route
 * `<keywords>` - Any keyword tags that you think might describe the route, separated by commas.
 
@@ -34,6 +36,7 @@ a standard form derived from the hash of the polyline of the route.
 
 From each of the standardised gpx files in the [gpx](gpx) directory a json
 dictionary is created, which contains:
+
 * The `name` for the route
 * The `description` of the route
 * An `id` derived from the hash of the combined segments
@@ -43,8 +46,11 @@ dictionary is created, which contains:
 * for each of the `segments` in the file:
 * A `polyline` of the route
 * A `length` of the route
-* A set of `heights` of the route. Note that this is interpolated to ~100
-    points, as it is intended for generating elevation plots.
+* An `ele` polyline of the route, plotting elevation against distance instead
+  of longitude against latitude. These two dimensions are both given in
+  hundreds of kilometres (10⁵ metres) instead of degrees, so that the encoded
+  polyline algorithm can store them as efficiently as possible with a
+  resolution of one metre.
 
 These json dictionaries are then concatenated to create
-[generated/data.json](generated/data.json).
+[walks.json](walks.json).
