@@ -22,12 +22,21 @@ jobs:
       - name: Run compile
         run: |
           python compile.py
+      - name: Committers
+        run: |
+          ( echo "CO_AUTHORS<<EOF"
+            git log --pretty=format:"Co-authored-by: %aN <%aE>" | awk '/<goaty@/ {exit} {print}' | sort -u
+            echo EOF
+          ) >> $GITHUB_ENV
       - name: Commit changes
         uses: EndBug/add-and-commit@v5
         with:
           author_name: Goaty Bot
           author_email: goaty@ubes.co.uk
-          message: 'Automatically compile'
+          message: |
+            Automatically compile
+
+            ${{ENV.CO_AUTHORS}}
           add: 'gpx/* walks.json'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
