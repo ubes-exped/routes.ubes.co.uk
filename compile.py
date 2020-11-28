@@ -14,6 +14,10 @@ import hashlib
 from typing import TypedDict, List, Any, Tuple, Optional
 from timeit import default_timer as timer
 
+with open("cname", "r") as cname_file:
+    cname = cname_file.read().strip()
+    url_base = "https://" + cname
+
 elevation_data = srtm.get_data(local_cache_dir="srtm_cache")
 
 base_dir = os.path.dirname(os.path.realpath(__file__))
@@ -106,7 +110,7 @@ def encode_polyline(points: List[gpxpy.geo.Location]) -> str:
     return polyline.encode([(p.latitude, p.longitude) for p in points])
 
 
-def safe_strip(string: Optional[str])->Optional[str]:
+def safe_strip(string: Optional[str]) -> Optional[str]:
     if string is None:
         return string
     return string.strip()
@@ -174,7 +178,7 @@ def process_gpx(gpx_filepath: str, elevations_max_len=100, simplification: int =
     utf8_polylines = json.dumps(full_polyline).encode("UTF-8")
     walk_id = hashlib.sha1(utf8_polylines).hexdigest()[:6]
     summary.id = walk_id
-    summary.filename = os.path.join("gpx", "route_" + walk_id + ".gpx")
+    summary.filename = "/".join(url_base, "gpx", "route_" + walk_id + ".gpx")
 
     new_gpx_filepath = os.path.join(base_dir, summary.filename)
     os.makedirs(os.path.dirname(new_gpx_filepath), exist_ok=True)
