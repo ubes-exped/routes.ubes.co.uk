@@ -121,9 +121,9 @@ def process_gpx(gpx_filepath: str, elevations_max_len=100, simplification: int =
     with open(gpx_filepath, "rt") as gpx_file:
         gpx = gpxpy.parse(gpx_file, version="1.1")
 
-    summary.name = gpx.name
-    summary.description = gpx.description
-    summary.author = gpx.author_name
+    summary.name = gpx.name.strip()
+    summary.description = gpx.description.strip()
+    summary.author = gpx.author_name.strip()
 
     tags = gpx.keywords
     if tags is not None:
