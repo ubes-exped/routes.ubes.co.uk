@@ -4,31 +4,30 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: [3.8]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Run compile
-      run: |
-        python compile.py
-    - name: Commit changes
-      uses: EndBug/add-and-commit@v5
-      with:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run compile
+        run: |
+          python compile.py
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v5
+        with:
           author_name: Goaty Bot
           author_email: goaty@bristol.ac.uk
-          message: "Automatically compile"
-          add: "gpx/* walks.json"
-      env:
+          message: 'Automatically compile'
+          add: 'gpx/* walks.json'
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
