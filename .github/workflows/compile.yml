@@ -40,3 +40,8 @@ jobs:
           add: 'gpx/* walks.json'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Recache on server
+        uses: fjogeleit/http-request-action@master
+        with:
+          url: 'https://walks.ubes.co.uk/walks.json'
+          method: 'POST'
