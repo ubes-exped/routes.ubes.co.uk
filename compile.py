@@ -178,9 +178,10 @@ def process_gpx(gpx_filepath: str, elevations_max_len=100, simplification: int =
     utf8_polylines = json.dumps(full_polyline).encode("UTF-8")
     walk_id = hashlib.sha1(utf8_polylines).hexdigest()[:6]
     summary.id = walk_id
-    summary.filename = "/".join([url_base, "gpx", "route_" + walk_id + ".gpx"])
+    gpx_filename = os.path.join("gpx", "route_" + walk_id + ".gpx")
+    summary.filename = "/".join([url_base, gpx_filename])
 
-    new_gpx_filepath = os.path.join(base_dir, summary.filename)
+    new_gpx_filepath = os.path.join(base_dir, gpx_filename)
     os.makedirs(os.path.dirname(new_gpx_filepath), exist_ok=True)
     with open(new_gpx_filepath, "wt") as new_gpx_file:
         new_gpx_file.write(gpx.to_xml())
