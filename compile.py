@@ -235,8 +235,11 @@ if __name__ == "__main__":
 
     for gpx in gpxs:
         start = timer()
-        process_gpx(gpx)
-        print(gpx, "processed in", timer() - start, "seconds")
+        try:
+            process_gpx(gpx)
+            print(gpx, "processed in", timer() - start, "seconds")
+        except Exception as e:
+            print(gpx, "failed to process:", e)
 
     combined_file_path = os.path.join(base_dir, "walks.json")
     combine_json_files(combined_file_path, generated_dir)
