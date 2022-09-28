@@ -186,11 +186,11 @@ def process_gpx(gpx_filepath: str, elevations_max_len=100, simplification: int =
     with open(new_gpx_filepath, "wt") as new_gpx_file:
         new_gpx_file.write(gpx.to_xml())
 
-    if os.path.abspath(new_gpx_filepath) != os.path.abspath(gpx_filepath):
-        os.remove(gpx_filepath)
-
     summary_file = os.path.join(generated_dir, "route_" + walk_id + ".json")
     write_json(summary_file, summary)
+
+    if os.path.abspath(new_gpx_filepath) != os.path.abspath(gpx_filepath):
+        os.remove(gpx_filepath)
 
 
 def combine_json_files(output_file_path: str, input_dir: str):
