@@ -40,6 +40,9 @@ jobs:
           add: 'gpx/* walks.json'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Sleep for 2 seconds
+        run: sleep 2s
+        shell: bash
       - name: Recache on server
         uses: fjogeleit/http-request-action@master
         with:
