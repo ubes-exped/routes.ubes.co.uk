@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www.garmin.com/xmlschemas/GpxExtensionsv3.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v1 http://www.garmin.com/xmlschemas/TrackPointExtensionv1.xsd" version="1.1" creator="StravaGPX">
+  <metadata>
+    <name>Moel Siabod</name>
+    <desc>AGM 2022 Day 2: I think this is my favourite mountain! Awesome day out with lakes, quarries, a small Grade 1- scramble and amazing views from the top.</desc>
+    <author>
+      <name>Isaac Ogden</name>
+    </author>
+  </metadata>
   <rte>
+    <name>Moel Siabod</name>
+    <desc>AGM 2022 Day 2: I think this is my favourite mountain! Awesome day out with lakes, quarries, a small Grade 1- scramble and amazing views from the top.</desc>
     <rtept lat="53.10205" lon="-3.902151">
       <ele>186</ele>
     </rtept>
