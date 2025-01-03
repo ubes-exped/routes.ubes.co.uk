@@ -7,8 +7,7 @@
       <name>Raef Coles</name>
     </author>
     <keywords> one-climb, medium-length, High Street, Lake District, North-East Lake District</keywords>
-    <bounds minlat="54.48029" maxlat="54.51221" minlon="-2.93094" maxlon="-2.86493">
-    </bounds>
+    <bounds minlat="54.48029" maxlat="54.51221" minlon="-2.93094" maxlon="-2.86493" />
     <extensions>
       <os:version>2.0</os:version>
       <os:point lat="54.5122100" lon="-2.9239400" type="start"></os:point>
