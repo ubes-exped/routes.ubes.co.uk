@@ -2,20 +2,20 @@
 <gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:oa="http://www.outdooractive.com/GPX/Extensions/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" version="1.1" creator="outdooractive - http://www.outdooractive.com">
   <metadata>
     <name>Sugar Loaf - Llanbedr Local</name>
-    <desc>Medium walk starting from Llanber hut via river valley trails to Sugarloaf Peak, one steep ascend 1/4 way into hike</desc>
+    <desc>Medium walk starting from Llanbedr hut via river valley trails to Sugarloaf Peak, one steep ascend 1/4 way into hike</desc>
     <author>
       <name>James Harris</name>
     </author>
     <link href="https://www.outdooractive.com/r/253302380">
     </link>
-    <keywords>one-climb, medium-length, Sugarloaf, Llanber, Brecon, Brecon Beacons, Wales</keywords>
+    <keywords>one-climb, length:medium, Llanbedr, Brecon Beacons</keywords>
     <extensions>
       <oa:oaCategory>hikingTourTrail</oa:oaCategory>
     </extensions>
   </metadata>
   <rte>
     <name>Sugar Loaf - Llanbedr Local</name>
-    <desc>Medium walk starting from Llanber hut via river valley trails to Sugarloaf Peak, one steep ascend 1/4 way into hike</desc>
+    <desc>Medium walk starting from Llanbedr hut via river valley trails to Sugarloaf Peak, one steep ascend 1/4 way into hike</desc>
     <rtept lat="51.87669" lon="-3.106597">
       <ele>181</ele>
     </rtept>
