@@ -11,6 +11,8 @@ import os
 import itertools
 import shutil
 import hashlib
+import traceback
+import sys
 from typing import TypedDict, List, Any, Tuple, Optional
 from timeit import default_timer as timer
 
@@ -71,6 +73,8 @@ def elevation_summary(
 
     elapsed_distance = 0
 
+    points_with_elevation = [point for point in points if point.elevation]
+
     elevations: List[Tuple[float, float]] = []
     """List[(dist, ele)], each given in hundreds of kilometres so they are efficiently encoded as polylines to the nearest metre"""
 
@@ -92,15 +96,14 @@ def elevation_summary(
 
         return elapsed_distance + remaining_distance / remaining_points
 
-    next_point = add_elevation(0, points[0].elevation)
+    next_point = add_elevation(0, points_with_elevation[0].elevation)
     ascent = 0
 
-    err = None
-    for i, prev, curr in zip(itertools.count(), points, points[1:]):
+    for i, prev, curr in zip(itertools.count(), points_with_elevation, points_with_elevation[1:]):
         ascent += max(0, curr.elevation - prev.elevation)
 
         elapsed_distance += curr.distance_2d(prev)
-        if elapsed_distance > next_point or i + 1 == len(points):
+        if elapsed_distance > next_point or i + 1 == len(points_with_elevation):
             next_point = add_elevation(elapsed_distance, curr.elevation)
 
     return ascent, polyline.encode(elevations)
@@ -239,7 +242,8 @@ if __name__ == "__main__":
             process_gpx(gpx)
             print(gpx, "processed in", timer() - start, "seconds")
         except Exception as e:
-            print(gpx, "failed to process:", e)
+            print(gpx, "failed to process:", e, file=sys.stderr)
+            print(traceback.format_exc(), file=sys.stderr)
 
     combined_file_path = os.path.join(base_dir, "walks.json")
     combine_json_files(combined_file_path, generated_dir)
